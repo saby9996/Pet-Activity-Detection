@@ -1,1 +1,2 @@
-# Pet-Activity-Detection
+# pet-activity
+Pet Activity Detection
