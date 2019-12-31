@@ -1,2 +1,14 @@
-# pet-activity
-Pet Activity Detection
+# **Pet Activity Detection**
+ [Heroku Application Link](https://pet-activity-detection.herokuapp.com/)
+ [SCIe Publication](https://www.mdpi.com/2076-3417/9/22/4938)
+
+![Flow of Project](https://i.ibb.co/xLwJ2Jr/flow.png)
+The data that was fetched from the 10 dogs were typically from 7 different activities namely walking, sitting, stay, eating, sideway, jump and nose work. The data extraction process leveraged a video camera for determining frames of the recorded video for identifying the “Activity” ground truths. Moreover, with regard to the sensors, two wearable devices were fastened on the dogs, one on the neck and one on the tail respectively. Both the sensors sampled the accelerometer and gyroscope data. The fetched data was definitely huge in size as the sensors that were used for the data extraction sampled data at the frequency of 33.3Hz. The total size of the data that was fetched had 254,826 samples from all the 7 activities.
+![enter image description here](https://i.ibb.co/s1KL2KC/act-1.png)
+![enter image description here](https://i.ibb.co/CwXrqn2/act-2.png)
+
+The data that was received consisted of a huge amount of noise as the signals were generated from the pets, therefore, some instances of disturbance during data collection are unavoidable. Therefore, to reduce the amount of noise a “Lowpass Butterworth Filter” was used. The Butterworth filter of the 6th order was used with the cutoff frequency of 3.667 Hz. The order of the filter was chosen on the basis of blocking the maximum noise and the cutoff frequency was decided on the basis of exploratory data analysis.
+
+Post filtering and noise removal of the data, a routine of feature engineering was performed to fetch important features from the data. For feature engineering 10 features for each axis of the accelerometer and gyroscope of both the wearable devices from neck and tail were derived using statistical methods and also domain knowledge. The features derived were, Mean, Standard Deviation, Mean Absolute Deviation, Minimum, Maximum, Energy Measure, Inter Quartile Range, Skewness and Kurtosis. All the features were calculated on the basis of a rolling window for 33 Samples with a Step Distance of 16 Samples which means every window must have different values in terms of the features which determine the optimum variance in the features. The number of features that were generated post feature engineering was 124 for all the axis for both the neck and tail worn wearable sensors. By using these features, we have also trained our model with various machine algorithms such as Random Forest, SVM, KNN, Naive Bayes, and ANN. Finally, a performance comparison of different machine learning algorithm has been performed.
+## Web Application 
+![enter image description here](https://i.ibb.co/KxQ6mgh/app-act.png)
